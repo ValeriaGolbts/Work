@@ -1,15 +1,16 @@
 package org.example;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class Person {
     private String name;
     private int age;
     private String email;
 
-    // Конструктор по умолчанию нужен для Jackson
     public Person() {}
 
     public Person(String name, int age, String email) {
@@ -43,16 +44,20 @@ public class Person {
         this.email = email;
     }
 
-    // Метод для сохранения в JSON файл
+    // Метод для сохранения в JSON
     public void saveToJson(String filename) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File(filename), this);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter(filename)) {
+            gson.toJson(this, writer);
+        }
     }
 
-    // Статический метод для загрузки из JSON файла
+    // Статический метод для загрузки
     public static Person loadFromJson(String filename) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File(filename), Person.class);
+        Gson gson = new Gson();
+        try (FileReader reader = new FileReader(filename)) {
+            return gson.fromJson(reader, Person.class);
+        }
     }
 
     @Override
@@ -69,15 +74,15 @@ public class Person {
         Person person = new Person("Иван Иванов", 30, "ivan@example.com");
 
         try {
-            // Сохраняем в JSON
+            // Сохраняем
             person.saveToJson("person.json");
             System.out.println("Объект сохранен в person.json");
 
-            // Загружаем из JSON
+            // Загружаем
             Person loadedPerson = Person.loadFromJson("person.json");
             System.out.println("Объект загружен из person.json");
 
-            // Выводим для проверки
+            // Выводим
             System.out.println("Исходный объект: " + person);
             System.out.println("Загруженный объект: " + loadedPerson);
         } catch (IOException e) {
