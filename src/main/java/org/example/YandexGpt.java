@@ -16,8 +16,8 @@ public final class YandexGpt
 
     private static String aje5q6bu3uie86gn8q62;
     private static final String API_KEY = aje5q6bu3uie86gn8q62 ;
-    private static String b1gul7mru1iq5c93j2tp;
-    private static final String FOLDER_ID = b1gul7mru1iq5c93j2tp ;
+    //private static String b1gul7mru1iq5c93j2tp;
+    private static final String FOLDER_ID = "b1gul7mru1iq5c93j2tp" ;
 
     static private final Gson gson = new Gson();    // экземпляр Gson для работы с JSON
 
@@ -60,5 +60,9 @@ public final class YandexGpt
         try (final var r = new BufferedReader(new InputStreamReader(httpCon.getInputStream(), "UTF-8"))){
             return gson.fromJson(r, Response.class);
         }
+    }
+    public String generateSlideUsingClient(String slideTitle) throws IOException {
+        Client client = new Client();
+        return client.generateSlideText(slideTitle);
     }
 }
