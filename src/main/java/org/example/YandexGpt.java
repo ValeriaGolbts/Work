@@ -14,8 +14,9 @@ public final class YandexGpt
     //ENV_VAR_FOLDER = "LWR_CLOUD_YAGPT_FOLDER", // имя переменной окружения для folderId
     //URL_ASYNC = ".../completionAsync",         // URL для асинхронного запроса
     URL_SYNC = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion";                // URL для синхронного запроса
+
     //private static String aje5q6bu3uie86gn8q62;
-    private static final String API_KEY = "aje5q6bu3uie86gn8q62" ;
+    private static final String KEY = "aje5q6bu3uie86gn8q62" ;
     //private static String b1gul7mru1iq5c93j2tp;
     private static final String FOLDER_ID = "b1gul7mru1iq5c93j2tp" ;
 
@@ -47,7 +48,7 @@ public final class YandexGpt
         httpCon.setDoOutput(true);
         httpCon.setInstanceFollowRedirects( false );
         httpCon.setRequestMethod("POST");
-        httpCon.setRequestProperty("Authorization", "Api-Key " + API_KEY );
+        httpCon.setRequestProperty("Authorization", "Api-Key " + KEY );
         httpCon.setRequestProperty("Content-Type", "application/json");
         httpCon.setRequestProperty( "charset", "utf-8");
         httpCon.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
@@ -71,7 +72,7 @@ public final class YandexGpt
                 }
                 System.err.println("Ошибка от API: " + errorResponse.toString());
             }
-            throw new IllegalStateException("HTTP error: " + responseCode);
+            throw new IllegalStateException("HTTP_error: " + responseCode);
         }
 
         //    throw new IllegalStateException("HTTP Code is " + httpCon.getResponseCode());

@@ -9,7 +9,7 @@ public class TEST {
             YandexGpt yandexGpt = new YandexGpt(
                     new CompletionOptions(false, 0.7, 1024),
                     Arrays.asList(
-                            new Message("system", "Помощник."),
+                            new Message("system", "Помощник для написания текста."),
                             new Message("user", "Напиши текст для слайда о Java.")
                     )
             );
