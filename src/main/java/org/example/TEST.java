@@ -15,7 +15,7 @@ public class TEST {
             );
 
             Response response = yandexGpt.doSync();
-            System.out.println("Текст ответа: " +
+            System.out.println("Ответ: " +
                     response.getResult().getAlternatives().get(0).getMessage().getText());
         } catch (IOException e) {
             e.printStackTrace();
