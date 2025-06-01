@@ -16,7 +16,7 @@ public final class YandexGpt
     URL_SYNC = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion";                // URL для синхронного запроса
 
     //private static String aje5q6bu3uie86gn8q62;
-    private static final String API_KEY = "REDACTED" ;
+    private static final String API_KEY = "aje5q6bu3uie86gn8q62" ;
     //private static String b1gul7mru1iq5c93j2tp;
     private static final String FOLDER_ID = "b1gul7mru1iq5c93j2tp" ;
 
